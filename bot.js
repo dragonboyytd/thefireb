@@ -80,60 +80,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-client.on("ready", async () => {
-    if(client.guilds.size > 1) {
-        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
-        console.log(`${client.user.username} is online on ${client.guilds.size} servers!`)
-    } else {
-        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
-        console.log(`${client.user.username} is online on ${client.guilds.size} server!`)
-    }
-    client.user.setStatus("online");
-});
-
-client.on("guildCreate", guild => {
-    console.log("Joined a new guild: " + guild.name);
-    if(client.guilds.size > 1) {
-        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
-    } else {
-        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
-    }
-});
-
-client.on("guildDelete", guild => {
-    console.log("Left a guild: " + guild.name);
-    if(client.guilds.size > 1) {
-        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
-    } else {
-        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
-    }
-});
-
-client.on("message", async () => {
-  
-})
-
-
-
 	
 	
 	
@@ -309,164 +255,10 @@ message.channel.sendEmbed(embed);
 
 
 
-client.on('message', message => {
-   if (message.content.startsWith("id")) {
-                if(!message.channel.guild) return message.reply('** This command only for servers**');
-
-               var mentionned = message.mentions.users.first();
-    var mentionavatar;
-      if(mentionned){
-          var mentionavatar = mentionned;
-      } else {
-          var mentionavatar = message.author;
-          
-      }
-   let embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-   .setThumbnail(`${mentionavatar.avatarURL}`)
-  .addField("Name:",`<@` + `${mentionavatar.id}` + `>`, true)
-  .addField('Discrim:',"#" +  `${mentionavatar.discriminator}`, true)
-   .addField("ID:", "**[" + `${mentionavatar.id}` + "]**", true)
-  .addField("Create At:", "**[" + `${mentionavatar.createdAt}` + "]**", true)
-     
-     
-  message.channel.sendEmbed(embed);
-  console.log('[id] Send By: ' + message.author.username)
-    }
-});
-
-
-
-client.on('message',message =>{
-    var prefix = "f";
-    if(message.content.startsWith(prefix + 'top')) {
-  message.guild.fetchInvites().then(i =>{
-  var invites = [];
-   
-  i.forEach(inv =>{
-    var [invs,i]=[{},null];
-     
-    if(inv.maxUses){
-        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
-    }else{
-        invs[inv.code] =+ inv.uses;
-    }
-        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
-   
-  });
-  var embed = new Discord.RichEmbed()
-  .setColor("#000000")
-  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
-  .setThumbnail("https://i.imgur.com/OM00xyh.png")
-           message.channel.send({ embed: embed });
-   
-  });
-   
-    }
-  });
-
-
-  
-  
-  
-  
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
 
 
 
  
-
-
- 
-
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -485,7 +277,6 @@ client.on("message", message => {
 	  .addField('fbc', `لخاصية البرودكستات`)
       .setFooter('======================================================')
       .setFooter('اوامر الاعضاء')
-      .addField('finvite', `لاضافة البوت الى سيرفرك`)
 	  .addField('froles', `لمعرفة الرتب الي في السيرفر`)
       .addField('favatar', `يجبلك الافتار حقك يعني صورة حسابك`)
       .addField('f2avatar', `الافتار عن طريق المنشن`)
@@ -518,16 +309,7 @@ client.on("message", message => {
 
 
 
-client.on("message", message => {
- if (message.content === "/invite") {
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setFooter('© Premium Bot:heart: جميع الحقوق محفوظة 2017 لــبوت')
-      .addField('شكرا لك لاستخدامك ل دراجون بوت', `https://discordapp.com/api/oauth2/authorize?client_id=470475174219743234&permissions=8&scope=bot`)
-  message.author.send({embed});
 
- }
-});
 
 
 
@@ -1668,16 +1450,6 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   }
  
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
